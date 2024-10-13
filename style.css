@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background: #213a38;
+  cursor: none;
+  position: relative;
+  transition: background-color 0.5s; /* Smooth background transition */
+}
+
+h2 {
+  font-size: 10em;
+  color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.soap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5) rotate(335deg);
+  z-index: 2;
+  pointer-events: none;
+  transition: transform 0.1s;
+}
+
+body:hover .soap {
+  transform: translate(-50%, -50%) scale(0.6) rotate(335deg); /* Slightly increase size on hover */
+}
+
+i {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: bubble 2s ease-in forwards;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translate(0, 0) scale(0.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(var(--size));
+    opacity: 0; /* Fade out effect */
+  }
+}
+
+.background-bubble {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0; /* Behind everything else */
+  opacity: 0.5;
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: float 6s infinite; /* Background bubble animation */
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
